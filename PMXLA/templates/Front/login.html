@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+
+// block nội dung
+{% block content %}
+    <button onclick="message()">Click</button>
+{% endblock %}
+
+
+// block javascript
+{% block script %}
+<script>
+    {% comment %} {% if message %}
+        setTimeout(function(){
+            messageBlock.classList.add("hide");
+            // Đợi animation kết thúc
+            messageBlock.addEventListener("animationend", function handler() {
+                messageBlock.style.display = "none";
+                // Xóa listener sau khi chạy
+                messageBlock.removeEventListener("animationend", handler);
+            });
+        }, 3000)
+    {% endif %} {% endcomment %}
+    function message() {
+        const message = "{{ message|escapejs }}";
+        console.log(message);
+        const messageBlock = document.getElementById("message-block");
+        if(messageBlock.classList.contains("hide")){
+            messageBlock.classList.remove("hide");
+            messageBlock.style.display = "block";
+        }
+    }
+
+    // Ẩn message sau 5 giây hoặc khi nhấn đóng
+    //document.addEventListener("DOMContentLoaded", function() {
+    const messageBlock = document.getElementById("message-block");
+    const closeButton = document.getElementById("close-message");
+        if (closeButton) {
+            closeButton.addEventListener("click", function() {
+                messageBlock.classList.add("hide");
+                // Đợi animation kết thúc
+                messageBlock.addEventListener("animationend", function handler() {
+                    messageBlock.style.display = "none";
+                    // Xóa listener sau khi chạy
+                    messageBlock.removeEventListener("animationend", handler);
+                });
+
+            });
+        }
+</script>
+{% endblock %}
+
+
+// block hiển thị thông báo 
+{% block message %}
+    {% if message %}
+    <div id="message-block" class="d-flex">
+        <p><pre>{{ message }}</pre></p>
+        <svg id="khung" width="70" height="70">
+            <!-- Vòng tròn -->
+            <circle 
+                class="circle-path"
+                cx="35" 
+                cy="35" 
+                r="20"
+            />
+            <!-- Dấu tích -->
+            <path 
+                class="check-path"
+                d="M27 35 L33 42 L43 28"
+            />
+        </svg>
+        <button id="close-message">Đóng</button>
+    </div>
+    {% endif %}
+{% endblock %}
