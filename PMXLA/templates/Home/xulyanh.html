@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" style="color:black;" href="/mainpage/">Alexa</a>
+            
+            <!-- Nút thu gọn trên thiết bị nhỏ -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Nội dung điều hướng -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <img src="/media/icon/save.png" alt="Mũi tên" style="width: 24px; height: 24px;">
+                    </li>
+                    <li class="nav-item">
+                        <img src="/media/icon/image.png" alt="Mũi tên" style="width: 24px; height: 24px;">
+                    </li>
+                    <li class="nav-item">
+                        <img src="/media/icon/move.png" alt="Mũi tên" style="width: 24px; height: 24px;">
+                    </li>
+                    <li class="nav-item">
+                        <img src="/media/icon/eraser.png" alt="Mũi tên" style="width: 24px; height: 24px;">
+                    </li>
+
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" style="color:black" href="/userpage/">User</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link active" style="color:black" href="{% url 'loginpage' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="color:black" href="{% url 'signuppage' %}">Signup</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+<nav class="vertical-nav" style="margin-left:10px;">
+    <div class="container" style="max-width:30px; border:2px solid black; position: absolute;">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <img src="/media/icon/T.png" alt="Mũi tên" style="width: 24px; height: 24px;">
+            </li>
+            <li class="nav-item">
+                <img src="/media/icon/circular-arrows.png" alt="Mũi tên" style="width: 24px; height: 24px;">
+            </li>
+            <li class="nav-item">
+                <img src="/media/icon/sorting.png" alt="Mũi tên" style="width: 24px; height: 24px;">
+            </li>
+            <li class="nav-item">
+                <img src="/media/icon/arrow_down_left.png" alt="Mũi tên" style="width: 24px; height: 24px;">
+            </li>
+            <li class="nav-item">
+                <img src="/media/icon/arrow_down_right.png" alt="Mũi tên" style="width: 24px; height: 24px;">
+            </li>
+            <li class="nav-item">
+                <img src="/media/icon/square.png" alt="Mũi tên" style="width: 24px; height: 24px;">
+            </li>
+            
+            <li class="nav-item">
+                <img src="/media/icon/right.png" alt="Mũi tên" style="width: 24px; height: 24px;">
+            </li>
+            <li class="nav-item">
+                <img src="/media/icon/left.png" alt="Mũi tên" style="width: 24px; height: 24px;">
+            </li>
+            <li class="nav-item">
+                <img src="/media/icon/add.png" alt="Mũi tên" style="width: 24px; height: 24px;">
+            </li>
+            <li class="nav-item">
+                <img src="/media/icon/minus.png" alt="Mũi tên" style="width: 24px; height: 24px;">
+            </li>
+            <li class="nav-item">
+                <img src="/media/icon/scissors.png" alt="Mũi tên" style="width: 24px; height: 24px;">
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <h1 style="width: 15vw;margin:auto; border:2px solid black; text-align:center;">Xu ly anh</h1>
+    <div class="container khung-anh"></div>
+</div>
+{% endblock content %}

@@ -131,10 +131,10 @@ CHANNEL_LAYERS = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = '/homepage'
+LOGIN_URL = '/homepage'
 
-LOGOUT_REDIRECT_URL = '/logout'
-LOGOUT_URL = '/logout'
+LOGOUT_REDIRECT_URL = '/mainpage'
+LOGOUT_URL = '/mainpage'
 
 AUTH_USER_MODEL = 'PMXLA.UserAlexa'
